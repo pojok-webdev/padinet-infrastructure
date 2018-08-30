@@ -1,6 +1,6 @@
 <button mat-button [matMenuTriggerFor]="infrastructure">Menu</button>
 <mat-menu #infrastructure="matMenu">
-  <button mat-menu-item>Add BTS</button>
-  <button mat-menu-item>Add Link</button>
+  <button mat-menu-item (click)="addBTS()">Add BTS</button>
+  <button mat-menu-item (click)="addLink()">Add Link</button>
 </mat-menu>
  <div #cy id="cy"></div>

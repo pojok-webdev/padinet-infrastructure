@@ -1,0 +1,22 @@
+<p>
+  add-link-dialog works!
+</p>
+<mat-form-field class="full-width">
+  <input type="text" matInput [(ngModel)]="edge.id">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <mat-select placeholder="Source" [(ngModel)]="edge.source">
+    <mat-option value="IP_Transit">IP_Transit</mat-option>
+    <mat-option value="Core">Core</mat-option>
+  </mat-select>  
+</mat-form-field>
+<mat-form-field class="full-width">
+  <mat-select placeholder="Target" [(ngModel)]="edge.target">
+    <mat-option value="Sucofindo">Sucofindo</mat-option>
+    <mat-option value="Bidakara">Bidakara</mat-option>
+    <mat-option value="Cikarang">Cikarang</mat-option>
+  </mat-select>    
+</mat-form-field>
+
+
+<button matButton (click)="saveEdge(edge)">Save</button>

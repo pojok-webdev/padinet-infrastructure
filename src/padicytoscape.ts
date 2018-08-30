@@ -1,12 +1,21 @@
 import * as CY from '../node_modules/cytoscape/dist/cytoscape'
 export class PadiCytoscape{
+    Cy
     constructor(){
+        
+    }
+    addEdge(obj,callback){
+        console.log("Add Edge",obj)
+        this.Cy.add(obj),
+        callback()
+    }
+    addCircle(obj,callback){
+        this.Cy.add(obj)
+        callback()
     }
     drawCircle(component_id){
         console.log("Content of component_id",component_id)
-        let Cy
-        let a = 
-        Cy = CY({
+        this.Cy = CY({
             container:component_id,
             elements:[
                 {data:{id:'IP_Transit'}},

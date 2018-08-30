@@ -1,0 +1,19 @@
+<p>
+  {{title}}
+</p>
+<mat-form-field class="full-width">
+  <input type="text" matInput placeholder="ID BTS" [(ngModel)]="obj.id">
+</mat-form-field>
+
+<mat-form-field class="full-width">
+  <mat-select placeholder="Parent" [(ngModel)]="obj.parent_">
+    <mat-option value="IP_Transit">IP_Transit</mat-option>
+    <mat-option value="Core">Core</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field class="full-width">
+  <input type="text" matInput placeholder="Location" [(ngModel)]="obj.location">
+</mat-form-field>
+
+<button class="mat-button" (click)="saveBts(obj)">Save</button>

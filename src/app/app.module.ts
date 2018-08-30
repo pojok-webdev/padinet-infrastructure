@@ -6,20 +6,31 @@ import { InfrastructureComponent } from './infrastructure/infrastructure.compone
 import { RouterModule } from '@angular/router';
 import { RoutingModule } from './routing/routing.module';
 import { PadiCytoscape } from '../padicytoscape';
-import { MatMenuModule } from '@angular/material'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatMenuModule, MatButtonModule, MatDialogModule, MatInputModule, MatSelectModule } from '@angular/material'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddBTSDialogComponent } from './add-btsdialog/add-btsdialog.component'
+import { FormsModule } from '@angular/forms';
+import { AddLinkDialogComponent } from './add-link-dialog/add-link-dialog.component'
 @NgModule({
   declarations: [
     AppComponent,
-    InfrastructureComponent
+    InfrastructureComponent,
+    AddBTSDialogComponent,
+    AddLinkDialogComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     RoutingModule,
     MatMenuModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    FormsModule
   ],
+  entryComponents:[AddBTSDialogComponent,AddLinkDialogComponent],
   providers: [PadiCytoscape],
   bootstrap: [AppComponent]
 })
