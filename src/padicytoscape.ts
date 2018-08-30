@@ -4,6 +4,14 @@ export class PadiCytoscape{
     constructor(){
         
     }
+    removeEdge(){
+        var collection = this.Cy.elements("edge[id='Core-BALI']");
+        this.Cy.remove( collection );    
+    }
+    removeNode(){
+        var collection = this.Cy.elements("node[id='Neo']");
+        this.Cy.remove( collection );    
+    }
     addEdge(obj,callback){
         console.log("Add Edge",obj)
         this.Cy.add(obj),
@@ -65,7 +73,9 @@ export class PadiCytoscape{
                 {
                     selector:'edge',
                     style:{
-                        'width':'3'
+                        'width':'3',
+                        'label':'data(id)',
+                        'curve-style':'bezier'
                     }
                 }
             ],

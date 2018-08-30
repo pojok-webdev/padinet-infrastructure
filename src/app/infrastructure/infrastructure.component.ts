@@ -48,4 +48,10 @@ export class InfrastructureComponent implements OnInit {
       data => {}
     )
   }
+  removeLink(){
+    this.cy.removeEdge()
+  }
+  removeNode(){
+    this.cy.removeNode()
+  }
 }
