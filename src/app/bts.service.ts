@@ -21,4 +21,30 @@ export class BtsService {
       }
     )
   }
+  getbtstowers(callback){
+    this.bts = this.http.get(this.appvar.server+'getbtstowers')
+    this.bts.subscribe(
+      data => {
+        console.log("Success getbts",data)
+        callback(data)
+      },
+      err => {
+        console.log("Error getbts",err)
+        callback(err)
+      }
+    )
+  }
+  getlinks(callback){
+    this.bts = this.http.get(this.appvar.server+'getlinks')
+    this.bts.subscribe(
+      data => {
+        console.log("Success getlinks",data)
+        callback(data)
+      },
+      err => {
+        console.log("Error getlinks",err)
+        callback(err)
+      }
+    )
+  }
 }

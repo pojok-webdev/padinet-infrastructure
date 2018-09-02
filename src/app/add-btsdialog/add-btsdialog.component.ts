@@ -22,19 +22,8 @@ export class AddBTSDialogComponent implements OnInit {
   }
   saveBts(bts){
     console.log("BTS_",bts)
-    let link = {
-      id:'x',
-      source:'IP_Transit',
-      target:'Sucofindo' 
-    }
-    console.log("Link",link)
     let obj = {data:bts}
-    this.padics.addCircle(obj,()=>{
-      this.padics.addEdge(link,()=>{
-        
-      })
-    })
-    
+    this.padics.addCircle(obj,()=>{})
     this.dref.close()
   }
 }

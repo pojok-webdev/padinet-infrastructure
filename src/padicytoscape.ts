@@ -1,8 +1,9 @@
 import * as CY from '../node_modules/cytoscape/dist/cytoscape'
+import { MatDialog } from '@angular/material';
+import { ShowNodePropertyDialogComponent } from './app/show-node-property-dialog/show-node-property-dialog.component';
 export class PadiCytoscape{
     Cy
     constructor(){
-        
     }
     removeEdge(){
         var collection = this.Cy.elements("edge[id='Core-BALI']");
@@ -20,6 +21,58 @@ export class PadiCytoscape{
     addCircle(obj,callback){
         this.Cy.add(obj)
         callback()
+    }
+    getRandomNum(){
+        return Math.floor((Math.random() * 100) + 1);
+    }
+    refresh(){
+        
+        this.Cy.layout({
+            name:'breadthfirst'
+        })
+/*        this.Cy.layout({
+            name:'breadthfirst',/*PRESET,BREADTHFIRST,GRID*/
+            //rows:1
+//        })*/
+    }
+    initCy(nodes,edges,component_id,callback){
+        this.Cy = CY({
+            container:component_id,
+            elements:{nodes:nodes,edges:edges},
+            style:[
+                {
+                    selector:'node',
+                    style:{
+                        'background-color':'green',
+                        'label':'data(id)'
+                    }
+                },
+                {
+                    selector:'edge',
+                    style:{
+                        'width':'3',
+                        'label':'data(id)',
+                        'curve-style':'bezier'
+                    }
+                }
+            ],
+            styleEnable:true,
+            layout:{
+                name:'breadthfirst',/*PRESET,BREADTHFIRST,GRID,circle,concentric*/
+                rows:2,
+                fit:true,
+                padding:30,
+                strictHierarchy:true,
+                directed:true
+            },
+            zoom:2,
+            maxZoom:2,
+            minZoom:1e-50,
+            pan:{
+                x:50,y:50
+            }
+        })
+        callback(this.Cy)
     }
     drawCircle(component_id){
         console.log("Content of component_id",component_id)
@@ -87,8 +140,9 @@ export class PadiCytoscape{
             pan:{
                 x:0,y:0
             }
-
+        })
+        this.Cy.on('click',() => {
+            alert("Test")
         })
     }
-
 }

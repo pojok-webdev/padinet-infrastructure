@@ -10,13 +10,16 @@ import { MatMenuModule, MatButtonModule, MatDialogModule, MatInputModule, MatSel
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddBTSDialogComponent } from './add-btsdialog/add-btsdialog.component'
 import { FormsModule } from '@angular/forms';
-import { AddLinkDialogComponent } from './add-link-dialog/add-link-dialog.component'
+import { AddLinkDialogComponent } from './add-link-dialog/add-link-dialog.component';
+import { ShowNodePropertyDialogComponent } from './show-node-property-dialog/show-node-property-dialog.component'
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
     InfrastructureComponent,
     AddBTSDialogComponent,
-    AddLinkDialogComponent
+    AddLinkDialogComponent,
+    ShowNodePropertyDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { AddLinkDialogComponent } from './add-link-dialog/add-link-dialog.compon
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   entryComponents:[AddBTSDialogComponent,AddLinkDialogComponent],
   providers: [PadiCytoscape],
