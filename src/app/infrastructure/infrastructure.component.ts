@@ -6,6 +6,7 @@ import { AddBTSDialogComponent } from '../add-btsdialog/add-btsdialog.component'
 import { AddLinkDialogComponent } from '../add-link-dialog/add-link-dialog.component';
 import { BtsService } from '../bts.service';
 import { NodeInfoComponent } from '../node-info/node-info.component';
+import { EdgeInfoComponent } from '../edge-info/edge-info.component';
 @Component({
   selector: 'app-infrastructure',
   templateUrl: './infrastructure.component.html',
@@ -65,7 +66,18 @@ export class InfrastructureComponent implements OnInit {
               }
             })
         })
+
+        result.on('click','edge',(evt) => {
+          console.log("EVT",evt.target._private.data)
+          this.dialog.open(EdgeInfoComponent,{
+            width: '500px',
+            data:{
+              component:evt.target._private.data
+            }
+          })
       })
+
+    })
     })
   })
 }

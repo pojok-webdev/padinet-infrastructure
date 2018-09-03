@@ -14,6 +14,7 @@ import { AddLinkDialogComponent } from './add-link-dialog/add-link-dialog.compon
 import { ShowNodePropertyDialogComponent } from './show-node-property-dialog/show-node-property-dialog.component'
 import { HttpClientModule } from '@angular/common/http';
 import { NodeInfoComponent } from './node-info/node-info.component';
+import { EdgeInfoComponent } from './edge-info/edge-info.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { NodeInfoComponent } from './node-info/node-info.component';
     AddBTSDialogComponent,
     AddLinkDialogComponent,
     ShowNodePropertyDialogComponent,
-    NodeInfoComponent
+    NodeInfoComponent,
+    EdgeInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { NodeInfoComponent } from './node-info/node-info.component';
     FormsModule,
     HttpClientModule
   ],
-  entryComponents:[AddBTSDialogComponent,AddLinkDialogComponent,NodeInfoComponent],
+  entryComponents:[AddBTSDialogComponent,AddLinkDialogComponent,NodeInfoComponent,EdgeInfoComponent],
   providers: [PadiCytoscape],
   bootstrap: [AppComponent]
 })
