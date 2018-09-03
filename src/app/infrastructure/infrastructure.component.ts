@@ -31,6 +31,16 @@ export class InfrastructureComponent implements OnInit {
     this.bts.getbtstowers(result => {
       //console.log("getbts result",result)
       this.btses = result
+
+
+
+      result.forEach(node => {
+        node.id = node.name
+        this.globalnodes.push({data:node})
+      });
+
+
+
       /*this.btses.forEach(element => {
         this.cy.addCircle({
           data:{id:element.name}
@@ -55,25 +65,21 @@ export class InfrastructureComponent implements OnInit {
   ngAfterViewInit(){
     console.log('DIV',this.div.nativeElement)
     this.initNodes(nodes=>{
-      nodes.forEach(node => {
-        node.id = node.name
-        this.globalnodes.push({data:node})
-      });
       //this.initLinks()
-        
-    })
-    this.initLinks(edges=>{
-      console.log("Get Init Links invoked")
-      edges.forEach(edge=>{
-        console.log("edge",edge)
-        edge.source = edge.src
-        edge.target = edge.tgt
-        this.globaledges.push({data:edge})
-      })
-      this.cy.initCy(this.globalnodes,this.globaledges,this.div.nativeElement,result=>{
-
+      this.initLinks(edges=>{
+        console.log("Get Init Links invoked")
+        edges.forEach(edge=>{
+          console.log("edge",edge)
+          edge.source = edge.src
+          edge.target = edge.tgt
+          this.globaledges.push({data:edge})
+        })
+        this.cy.initCy(this.globalnodes,this.globaledges,this.div.nativeElement,result=>{
   
-      })
+    
+        })
+          
+    })
     })
 
 
