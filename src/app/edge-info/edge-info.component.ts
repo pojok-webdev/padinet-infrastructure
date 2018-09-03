@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { PadiCytoscape } from '../../padicytoscape';
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material';
 import { NodeService } from '../node.service';
+import { EdgeService } from '../edge.service';
 
 @Component({
   selector: 'app-edge-info',
@@ -17,7 +18,8 @@ export class EdgeInfoComponent implements OnInit {
     private cy : PadiCytoscape, 
     private dref : MatDialogRef<EdgeInfoComponent>,
     @Inject (MAT_DIALOG_DATA) private data:any,
-    private nodeservice : NodeService
+    private nodeservice : NodeService,
+    private edgeservice : EdgeService
   ) {
     this.nodeservice.getnodes(result => {
       this.btses = result
@@ -28,7 +30,12 @@ export class EdgeInfoComponent implements OnInit {
     this.edge.target = this.data.component.tgt
   }
   updateEdge(edge){
-    this.cy.updateEdge(edge.id,edge)
+    edge.tgt = edge.target
+    this.edgeservice.updateEdge(edge,result => {
+      this.cy.updateEdge(edge.id,edge,() => {
+        this.dref.close()
+      })
+    })
   }
   ngOnInit() {
   }

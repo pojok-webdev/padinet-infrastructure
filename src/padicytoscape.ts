@@ -10,12 +10,13 @@ export class PadiCytoscape{
         ele[0]._private.data = data
         console.log("Update Node invoked",ele[0]._private.data)
     }
-    updateEdge(id,data){
+    updateEdge(id,data,callback){
         var ele = this.Cy.elements("edge[id='"+id+"']")
         ele.move({
             target:data.target,
             source:data.source
         })
+        callback()
     }
     removeEdge(){
         var collection = this.Cy.elements("edge[id='Core-BALI']");

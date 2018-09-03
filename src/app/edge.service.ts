@@ -23,4 +23,17 @@ export class EdgeService {
       }
     )
   }
+  updateEdge(obj,callback){
+    this.obj = this.http.post<any>(this.appvar.server+'updateedge',obj)
+    this.obj.subscribe(
+      data => {
+        console.log(data),
+        callback(data)
+      },
+      err => {
+        console.log(err)
+        callback(err)
+      }
+    )
+  }
 }
