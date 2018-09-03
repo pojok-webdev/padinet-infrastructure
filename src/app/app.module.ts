@@ -13,13 +13,15 @@ import { FormsModule } from '@angular/forms';
 import { AddLinkDialogComponent } from './add-link-dialog/add-link-dialog.component';
 import { ShowNodePropertyDialogComponent } from './show-node-property-dialog/show-node-property-dialog.component'
 import { HttpClientModule } from '@angular/common/http';
+import { NodeInfoComponent } from './node-info/node-info.component';
 @NgModule({
   declarations: [
     AppComponent,
     InfrastructureComponent,
     AddBTSDialogComponent,
     AddLinkDialogComponent,
-    ShowNodePropertyDialogComponent
+    ShowNodePropertyDialogComponent,
+    NodeInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  entryComponents:[AddBTSDialogComponent,AddLinkDialogComponent],
+  entryComponents:[AddBTSDialogComponent,AddLinkDialogComponent,NodeInfoComponent],
   providers: [PadiCytoscape],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,7 @@ import { MatDialog  } from '@angular/material';
 import { AddBTSDialogComponent } from '../add-btsdialog/add-btsdialog.component';
 import { AddLinkDialogComponent } from '../add-link-dialog/add-link-dialog.component';
 import { BtsService } from '../bts.service';
+import { NodeInfoComponent } from '../node-info/node-info.component';
 @Component({
   selector: 'app-infrastructure',
   templateUrl: './infrastructure.component.html',
@@ -29,43 +30,23 @@ export class InfrastructureComponent implements OnInit {
   }
   initNodes(callback){
     this.bts.getbtstowers(result => {
-      //console.log("getbts result",result)
       this.btses = result
-
-
-
       result.forEach(node => {
         node.id = node.name
         this.globalnodes.push({data:node})
       });
-
-
-
-      /*this.btses.forEach(element => {
-        this.cy.addCircle({
-          data:{id:element.name}
-        },()=>{})
-      });*/
       callback(result)
     })
   }
   initLinks(callback){
     this.bts.getlinks(result => {
-      //console.log("getlinks result",result)
       this.btses = result
-      /*this.btses.forEach(element => {
-        this.cy.addEdge({data:{id:element.name,source:element.src,target:element.tgt}},()=>{
-          console.log("Link added")
-        })
-      });*/
       callback(result)
     })
-
   }
   ngAfterViewInit(){
     console.log('DIV',this.div.nativeElement)
     this.initNodes(nodes=>{
-      //this.initLinks()
       this.initLinks(edges=>{
         console.log("Get Init Links invoked")
         edges.forEach(edge=>{
@@ -75,15 +56,18 @@ export class InfrastructureComponent implements OnInit {
           this.globaledges.push({data:edge})
         })
         this.cy.initCy(this.globalnodes,this.globaledges,this.div.nativeElement,result=>{
-  
-    
+          result.on('click','node',(evt) => {
+            console.log("EVT",evt.target._private.data)
+            this.dialog.open(NodeInfoComponent,{
+              width: '500px',
+              data:{
+                component:evt.target._private.data
+              }
+            })
         })
-          
+      })
     })
-    })
-
-
-
+  })
 }
   showNodeProperty(){
     this.cytos.add({data:{id:'Bogor'}})
@@ -120,5 +104,8 @@ export class InfrastructureComponent implements OnInit {
   }
   removeNode(){
     this.cy.removeNode()
+  }
+  updateNode(id,data){
+    this.cy.updateNode(id,data)
   }
 }
