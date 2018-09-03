@@ -27,7 +27,9 @@ export class EdgeInfoComponent implements OnInit {
     this.edge.source = this.data.component.src
     this.edge.target = this.data.component.tgt
   }
-
+  updateEdge(edge){
+    this.cy.updateEdge(edge.id,edge)
+  }
   ngOnInit() {
   }
 
