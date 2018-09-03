@@ -2,18 +2,21 @@
   add-link-dialog works!
 </p>
 <mat-form-field class="full-width">
-  <input type="text" matInput [(ngModel)]="edge.id">
+  <input type="text" matInput [(ngModel)]="obj.id">
 </mat-form-field>
 <mat-form-field class="full-width">
-  <mat-select placeholder="Source" [(ngModel)]="edge.source">
+  <mat-select placeholder="Source" [(ngModel)]="obj.source">
     <mat-option value="{{bts.name}}" *ngFor="let bts of btses">{{bts.name}}</mat-option>
   </mat-select>  
 </mat-form-field>
 <mat-form-field class="full-width">
-  <mat-select placeholder="Target" [(ngModel)]="edge.target">
+  <mat-select placeholder="Target" [(ngModel)]="obj.target">
     <mat-option value="{{bts.name}}" *ngFor="let bts of btses">{{bts.name}}</mat-option>
   </mat-select>    
 </mat-form-field>
+<mat-form-field class="full-width">
+  <input type="text" matInput [(ngModel)]="obj.description">
+</mat-form-field>
 
 
-<button matButton (click)="saveEdge(edge)">Save</button>
+<button matButton (click)="saveEdge(obj)">Save</button>

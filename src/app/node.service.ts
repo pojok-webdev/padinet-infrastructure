@@ -36,14 +36,14 @@ export class NodeService {
     )
   }
   getlinks(callback){
-    this.node = this.http.get(this.appvar.server+'getlinks')
+    this.node = this.http.get(this.appvar.server+'getedges')
     this.node.subscribe(
       data => {
-        console.log("Success getlinks",data)
+        console.log("Success getedges",data)
         callback(data)
       },
       err => {
-        console.log("Error getlinks",err)
+        console.log("Error getedges",err)
         callback(err)
       }
     )

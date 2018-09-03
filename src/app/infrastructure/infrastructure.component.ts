@@ -84,7 +84,7 @@ export class InfrastructureComponent implements OnInit {
   showNodeProperty(){
     this.cytos.add({data:{id:'Bogor'}})
   }
-  addBTS(){
+  addNode(){
 
     this.dialog.open(AddBTSDialogComponent,{
       width:'500px',
