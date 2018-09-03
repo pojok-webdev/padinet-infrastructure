@@ -38,14 +38,10 @@ export class PadiCytoscape{
         return Math.floor((Math.random() * 100) + 1);
     }
     refresh(){
-        
         this.Cy.layout({
-            name:'breadthfirst'
-        })
-/*        this.Cy.layout({
             name:'breadthfirst',/*PRESET,BREADTHFIRST,GRID*/
-            //rows:1
-//        })*/
+            rows:1
+        })
     }
     initCy(nodes,edges,component_id,callback){
         this.Cy = CY({

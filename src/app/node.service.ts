@@ -5,38 +5,39 @@ import { AppvarService } from './appvar.service';
 @Injectable({
   providedIn: 'root'
 })
-export class BtsService {
-  bts : Observable<any>
+export class NodeService {
+  node : Observable<any>
   constructor(private http:HttpClient,private appvar:AppvarService) { }
-  saveBTS(objs,callback){
-    this.bts = this.http.post(this.appvar.server+'savebts',objs)
-    this.bts.subscribe(
+  saveNode(objs,callback){
+    console.log("NODE TO SAVE",objs)
+    this.node = this.http.post(this.appvar.server+'savenode',objs)
+    this.node.subscribe(
       data => {
-        console.log("Success savebts",data)
+        console.log("Success savenode",data)
         callback(data)
       },
       err => {
-        console.log("Error savebts",err)
+        console.log("Error savenode",err)
         callback(err)
       }
     )
   }
-  getbtstowers(callback){
-    this.bts = this.http.get(this.appvar.server+'getbtstowers')
-    this.bts.subscribe(
+  getnodes(callback){
+    this.node = this.http.get(this.appvar.server+'getnodes')
+    this.node.subscribe(
       data => {
-        console.log("Success getbts",data)
+        console.log("Success getnode",data)
         callback(data)
       },
       err => {
-        console.log("Error getbts",err)
+        console.log("Error getnode",err)
         callback(err)
       }
     )
   }
   getlinks(callback){
-    this.bts = this.http.get(this.appvar.server+'getlinks')
-    this.bts.subscribe(
+    this.node = this.http.get(this.appvar.server+'getlinks')
+    this.node.subscribe(
       data => {
         console.log("Success getlinks",data)
         callback(data)

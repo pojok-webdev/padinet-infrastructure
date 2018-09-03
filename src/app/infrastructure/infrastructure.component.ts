@@ -4,7 +4,7 @@ import { PadiCytoscape } from '../../padicytoscape'
 import { MatDialog  } from '@angular/material';
 import { AddBTSDialogComponent } from '../add-btsdialog/add-btsdialog.component';
 import { AddLinkDialogComponent } from '../add-link-dialog/add-link-dialog.component';
-import { BtsService } from '../bts.service';
+import { NodeService } from '../node.service';
 import { NodeInfoComponent } from '../node-info/node-info.component';
 import { EdgeInfoComponent } from '../edge-info/edge-info.component';
 @Component({
@@ -19,7 +19,7 @@ export class InfrastructureComponent implements OnInit {
   constructor(
     private cy:PadiCytoscape,
     private dialog:MatDialog,
-    private bts:BtsService
+    private bts:NodeService
   ) {
   }
   globalnodes = []
@@ -30,7 +30,7 @@ export class InfrastructureComponent implements OnInit {
     return Math.floor((Math.random() * 100) + 1);
   }
   initNodes(callback){
-    this.bts.getbtstowers(result => {
+    this.bts.getnodes(result => {
       this.btses = result
       result.forEach(node => {
         node.id = node.name

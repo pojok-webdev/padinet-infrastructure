@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { PadiCytoscape } from '../../padicytoscape';
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material';
-import { BtsService } from '../bts.service';
+import { NodeService } from '../node.service';
 
 @Component({
   selector: 'app-edge-info',
@@ -17,9 +17,9 @@ export class EdgeInfoComponent implements OnInit {
     private cy : PadiCytoscape, 
     private dref : MatDialogRef<EdgeInfoComponent>,
     @Inject (MAT_DIALOG_DATA) private data:any,
-    private btsservice : BtsService
+    private nodeservice : NodeService
   ) {
-    this.btsservice.getbtstowers(result => {
+    this.nodeservice.getnodes(result => {
       this.btses = result
       console.log("BTS Result",result)
     })

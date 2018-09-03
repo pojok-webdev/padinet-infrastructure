@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { PadiCytoscape } from '../../padicytoscape';
-import { BtsService } from '../bts.service';
+import { NodeService } from '../node.service';
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material'
 
 @Component({
@@ -12,11 +12,11 @@ export class AddLinkDialogComponent implements OnInit {
   btses
   constructor(
     private padiCS:PadiCytoscape,
-    private nodes : BtsService,
+    private nodes : NodeService,
     public dref:MatDialogRef<AddLinkDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any
   ) {
-    this.nodes.getbtstowers(result => {
+    this.nodes.getnodes(result => {
       console.log("Result", result);
       this.btses = result
     })
