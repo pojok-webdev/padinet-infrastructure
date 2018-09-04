@@ -7,6 +7,7 @@ import { AddLinkDialogComponent } from '../add-link-dialog/add-link-dialog.compo
 import { NodeService } from '../node.service';
 import { NodeInfoComponent } from '../node-info/node-info.component';
 import { EdgeInfoComponent } from '../edge-info/edge-info.component';
+import { EdgeService } from '../edge.service';
 @Component({
   selector: 'app-infrastructure',
   templateUrl: './infrastructure.component.html',
@@ -16,10 +17,12 @@ export class InfrastructureComponent implements OnInit {
   @ViewChild('cy') div :ElementRef
   cytos
   btses
+  edges
   constructor(
     private cy:PadiCytoscape,
     private dialog:MatDialog,
-    private bts:NodeService
+    private bts:NodeService,
+    private edge:EdgeService
   ) {
   }
   globalnodes = []
@@ -33,14 +36,14 @@ export class InfrastructureComponent implements OnInit {
     this.bts.getnodes(result => {
       this.btses = result
       result.forEach(node => {
-        node.id = node.name
+        
         this.globalnodes.push({data:node})
       });
       callback(result)
     })
   }
   initLinks(callback){
-    this.bts.getlinks(result => {
+    this.edge.getedges(result => {
       this.btses = result
       callback(result)
     })
@@ -52,8 +55,6 @@ export class InfrastructureComponent implements OnInit {
         console.log("Get Init Links invoked")
         edges.forEach(edge=>{
           console.log("edge",edge)
-          edge.source = edge.src
-          edge.target = edge.tgt
           this.globaledges.push({data:edge})
         })
         this.cy.initCy(this.globalnodes,this.globaledges,this.div.nativeElement,result=>{
@@ -111,13 +112,16 @@ export class InfrastructureComponent implements OnInit {
       data => {}
     )
   }
-  removeLink(){
-    this.cy.removeEdge()
+  removeLink(link_id){
+    this.cy.removeEdge(link_id)
   }
   removeNode(){
     this.cy.removeNode()
   }
-  updateNode(id,data){
-    this.cy.updateNode(id,data)
+  updateNode(){
+    let id="Kentang",data={id:"OK"}
+    this.cy.updateNode(id,data,result => {
+      console.log("UpdateNode result",result)
+    })
   }
 }

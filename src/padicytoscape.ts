@@ -5,10 +5,22 @@ export class PadiCytoscape{
     Cy
     constructor(){
     }
-    updateNode(id,data){
-        var ele = this.Cy.elements("node[id='"+id+"']");
-        ele[0]._private.data = data
-        console.log("Update Node invoked",ele[0]._private.data)
+    searchNode(id,callback){
+        var ele = this.Cy.elements("node[id='"+id+"']")
+        callback(ele)
+    }
+    updateNode(id,data,callback){
+        console.log("ID to update",id)
+        console.log("Data coming",data)
+        //var ele = this.Cy.elements("node[id='"+id+"']");
+        this.searchNode(id,result => {
+            //result.data({id:data.id})  
+//            console.log("Ele",result[0])
+            result[0]._private.data.id = data.id
+            //result[0].data({id:data.id})
+//            console.log("Update Node invoked",result[0]._private.data)
+            callback(result[0].data('id'))
+        })
     }
     updateEdge(id,data,callback){
         var ele = this.Cy.elements("edge[id='"+id+"']")
@@ -18,8 +30,8 @@ export class PadiCytoscape{
         })
         callback()
     }
-    removeEdge(){
-        var collection = this.Cy.elements("edge[id='Core-BALI']");
+    removeEdge(edge_id){
+        var collection = this.Cy.elements("edge[id='"+edge_id+"']");
         this.Cy.remove( collection );    
     }
     removeNode(){
@@ -60,7 +72,7 @@ export class PadiCytoscape{
                     selector:'edge',
                     style:{
                         'width':'3',
-                        'label':'data(id)',
+                        'label':'data(name)',
                         'curve-style':'bezier'
                     }
                 }

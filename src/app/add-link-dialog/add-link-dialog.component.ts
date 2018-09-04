@@ -30,16 +30,9 @@ export class AddLinkDialogComponent implements OnInit {
   }
   saveEdge(edge){
     let obj = {data:edge}
-    let link = {
-      name:edge.id,
-      src:edge.source,
-      tgt:edge.target,
-      linktype:0,
-      description:edge.description,
-      createuser:'anonymous'
-    }
     console.log("Edge",edge)
-    this.edge.saveEdge(link,result => {
+    edge.linktype = "1"
+    this.edge.saveEdge(edge,result => {
       this.padiCS.addEdge(obj,() => {
         this.dref.close()
       })  

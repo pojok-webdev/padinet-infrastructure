@@ -23,11 +23,9 @@ export class EdgeInfoComponent implements OnInit {
   ) {
     this.nodeservice.getnodes(result => {
       this.btses = result
-      console.log("BTS Result",result)
+      console.log("Node Result",result)
     })
     this.edge = this.data.component
-    this.edge.source = this.data.component.src
-    this.edge.target = this.data.component.tgt
   }
   updateEdge(edge){
     edge.tgt = edge.target
@@ -39,5 +37,11 @@ export class EdgeInfoComponent implements OnInit {
   }
   ngOnInit() {
   }
-
+  removeEdge(edge){
+    this.edgeservice.removeedge(edge,result => {
+      console.log("Edge",result)
+      this.cy.removeEdge(edge.id)
+      this.dref.close()
+    })
+  }
 }

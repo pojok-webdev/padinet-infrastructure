@@ -36,4 +36,30 @@ export class EdgeService {
       }
     )
   }
+  getedges(callback){
+    this.obj = this.http.get(this.appvar.server+'getedges')
+    this.obj.subscribe(
+      data => {
+        console.log("Success getedges",data)
+        callback(data)
+      },
+      err => {
+        console.log("Error getedges",err)
+        callback(err)
+      }
+    )
+  }
+  removeedge(obj,callback){
+    this.obj = this.http.get(this.appvar.server+'removeedge/'+obj.id)
+    this.obj.subscribe(
+      data => {
+        console.log("Success remove edge",data)
+        callback(data)
+      },
+      err => {
+        console.log("Error remove edge",err)
+        callback(err)
+      }
+    )
+  }
 }

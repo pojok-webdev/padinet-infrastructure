@@ -5,15 +5,21 @@
   <input type="text" matInput [(ngModel)]="edge.id">
 </mat-form-field>
 <mat-form-field class="full-width">
+  <input type="text" matInput [(ngModel)]="edge.name">
+</mat-form-field>
+<mat-form-field class="full-width">
   <mat-select placeholder="Source" [(ngModel)]="edge.source">
-    <mat-option value="{{bts.name}}" *ngFor="let bts of btses">{{bts.name}}</mat-option>
+    <mat-option value="{{bts.id}}" *ngFor="let bts of btses">{{bts.id}}</mat-option>
   </mat-select>  
 </mat-form-field>
 <mat-form-field class="full-width">
   <mat-select placeholder="Target" [(ngModel)]="edge.target">
-    <mat-option value="{{bts.name}}" *ngFor="let bts of btses">{{bts.name}}</mat-option>
+    <mat-option value="{{bts.id}}" *ngFor="let bts of btses">{{bts.id}}</mat-option>
   </mat-select>    
 </mat-form-field>
+<mat-form-field class="full-width">
+  <input type="text" matInput [(ngModel)]="edge.description">
+</mat-form-field>
 
-
-<button matButton (click)="updateEdge(edge)">Update</button>
+<button mat-button (click)="updateEdge(edge)">Update</button>
+<button mat-button (click)="removeEdge(edge)">Remove</button>

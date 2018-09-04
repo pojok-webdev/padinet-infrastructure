@@ -35,15 +35,28 @@ export class NodeService {
       }
     )
   }
-  getlinks(callback){
-    this.node = this.http.get(this.appvar.server+'getedges')
+  updatenode(obj,callback){
+    this.node = this.http.post(this.appvar.server+'updatenode',obj)
     this.node.subscribe(
       data => {
-        console.log("Success getedges",data)
+        console.log("Success updatenode",data)
         callback(data)
       },
       err => {
-        console.log("Error getedges",err)
+        console.log("Error updatenode",err)
+        callback(err)
+      }
+    )
+  }
+  removeNode(obj,callback){
+    this.node = this.http.post(this.appvar.server+'removenode',obj)
+    this.node.subscribe(
+      data => {
+        console.log("Success removenode",data)
+        callback(data)
+      },
+      err => {
+        console.log("Error removenode",err)
         callback(err)
       }
     )

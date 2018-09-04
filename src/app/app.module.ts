@@ -6,7 +6,7 @@ import { InfrastructureComponent } from './infrastructure/infrastructure.compone
 import { RouterModule } from '@angular/router';
 import { RoutingModule } from './routing/routing.module';
 import { PadiCytoscape } from '../padicytoscape';
-import { MatMenuModule, MatButtonModule, MatDialogModule, MatInputModule, MatSelectModule } from '@angular/material'
+import { MatMenuModule, MatButtonModule, MatDialogModule, MatInputModule, MatSelectModule, MatTableModule } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddBTSDialogComponent } from './add-btsdialog/add-btsdialog.component'
 import { FormsModule } from '@angular/forms';
@@ -15,6 +15,7 @@ import { ShowNodePropertyDialogComponent } from './show-node-property-dialog/sho
 import { HttpClientModule } from '@angular/common/http';
 import { NodeInfoComponent } from './node-info/node-info.component';
 import { EdgeInfoComponent } from './edge-info/edge-info.component';
+import { TableviewComponent } from './tableview/tableview.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { EdgeInfoComponent } from './edge-info/edge-info.component';
     AddLinkDialogComponent,
     ShowNodePropertyDialogComponent,
     NodeInfoComponent,
-    EdgeInfoComponent
+    EdgeInfoComponent,
+    TableviewComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { EdgeInfoComponent } from './edge-info/edge-info.component';
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   entryComponents:[AddBTSDialogComponent,AddLinkDialogComponent,NodeInfoComponent,EdgeInfoComponent],
   providers: [PadiCytoscape],
