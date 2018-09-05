@@ -1,24 +1,24 @@
 <p>
-  Add Link
+  Edge Info
 </p>
 <mat-form-field class="full-width">
-  <input type="text" matInput [(ngModel)]="edge.id">
+  <input type="text" matInput [(ngModel)]="edge.id" placeholder="ID">
 </mat-form-field>
 <mat-form-field class="full-width">
-  <input type="text" matInput [(ngModel)]="edge.name">
+  <input type="text" matInput [(ngModel)]="edge.name" placeholder="Name">
 </mat-form-field>
 <mat-form-field class="full-width">
-  <mat-select placeholder="Source" [(ngModel)]="edge.source">
+  <mat-select placeholder="Source" [(ngModel)]="edge.source" placeholder="Source">
     <mat-option value="{{bts.id}}" *ngFor="let bts of btses">{{bts.id}}</mat-option>
   </mat-select>  
 </mat-form-field>
 <mat-form-field class="full-width">
-  <mat-select placeholder="Target" [(ngModel)]="edge.target">
+  <mat-select placeholder="Target" [(ngModel)]="edge.target" placeholder="Target">
     <mat-option value="{{bts.id}}" *ngFor="let bts of btses">{{bts.id}}</mat-option>
   </mat-select>    
 </mat-form-field>
 <mat-form-field class="full-width">
-  <input type="text" matInput [(ngModel)]="edge.description">
+  <input type="text" matInput [(ngModel)]="edge.description" placeholder="Description">
 </mat-form-field>
 
 <button mat-button (click)="updateEdge(edge)">Update</button>

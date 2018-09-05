@@ -9,9 +9,12 @@ import { NodeService } from '../node.service';
 })
 export class NodeInfoComponent implements OnInit {
   component = {
-   id:1,name:"he he",location:"Suraboyo" 
+   mysqlid:1,id:1,name:"",location:"Suraboyo" 
   }
-  constructor(
+  obj = {
+    id:1,name:"",location:"" 
+   }
+   constructor(
     private dref: MatDialogRef<NodeInfoComponent>,
     @Inject (MAT_DIALOG_DATA) private data:any,
     private cy: PadiCytoscape,
@@ -24,9 +27,9 @@ export class NodeInfoComponent implements OnInit {
     let id = component._id
     console.log("ID",id)
     console.log("Component",component)
-    //this.cy.updateNode(component.id,component,()=>{
+    this.cy.updateNode(component.id,component,()=>{
       this.dref.close()
-    //})
+    })
     //component.id = component._id
     /*this.nodeservice.updatenode(component, result => {
       this.cy.updateNode(this.data.component.name,component,() => {
@@ -40,6 +43,8 @@ export class NodeInfoComponent implements OnInit {
   ngOnInit() {
   }
   removeComponent(component){
-    this.nodeservice.removeNode(component, ()=>{})
+    this.nodeservice.removeNode(component, ()=>{
+      this.dref.close()
+    })
   }
 }

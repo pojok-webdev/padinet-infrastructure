@@ -49,7 +49,7 @@ export class NodeService {
     )
   }
   removeNode(obj,callback){
-    this.node = this.http.post(this.appvar.server+'removenode',obj)
+    this.node = this.http.get(this.appvar.server+'removenode/'+obj.mysqlid)
     this.node.subscribe(
       data => {
         console.log("Success removenode",data)

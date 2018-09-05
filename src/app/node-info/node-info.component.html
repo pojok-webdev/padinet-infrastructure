@@ -2,13 +2,13 @@
   PadiNEt Infrastructure Info
 </p>
 <mat-form-field class="full-width">
-  <input type="text" matInput [(ngModel)]="component.mysqlid" placeholder="MysqlID">
+  <input type="text" matInput [(ngModel)]="component.mysqlid" value="{{obj.mysqlid}}" placeholder="MysqlID">
 </mat-form-field>
 <mat-form-field class="full-width">
-  <input type="text" matInput [(ngModel)]="component.id" placeholder="ID">
+  <input type="text" matInput [(ngModel)]="component.id" value="{{obj.id}}" placeholder="ID">
 </mat-form-field>
 <mat-form-field class="full-width">
-  <input type="text" matInput [(ngModel)]="component.location" placeholder="Locations">
+  <input type="text" matInput [(ngModel)]="component.location" value="{{obj.location}}" placeholder="Locations">
 </mat-form-field>
 <button mat-button (click)="closeDialog()">Close</button>
 <button mat-button (click)="updateComponent(component)">Update</button>

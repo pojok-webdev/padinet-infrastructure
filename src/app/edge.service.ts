@@ -36,8 +36,15 @@ export class EdgeService {
       }
     )
   }
-  getedges(callback){
-    this.obj = this.http.get(this.appvar.server+'getedges')
+  getedges(obj,callback){
+    console.log("edge invoked",obj)
+    if(obj.node_id == null){
+      console.log("Without parameter")
+      this.obj = this.http.get(this.appvar.server+'getedges/'+obj.node_id)
+    }else{
+      console.log("With parameter")
+      this.obj = this.http.get(this.appvar.server+'getedges/'+obj.node_id)
+    }
     this.obj.subscribe(
       data => {
         console.log("Success getedges",data)

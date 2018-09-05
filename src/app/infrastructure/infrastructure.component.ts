@@ -43,7 +43,7 @@ export class InfrastructureComponent implements OnInit {
     })
   }
   initLinks(callback){
-    this.edge.getedges(result => {
+    this.edge.getedges({node_id:null},result => {
       this.btses = result
       callback(result)
     })

@@ -3,6 +3,8 @@ import { NodeService } from '../node.service';
 import { EdgeService } from '../edge.service';
 import { MatDialog } from '@angular/material';
 import { EdgeInfoComponent } from '../edge-info/edge-info.component';
+import { PadiCytoscape } from '../../padicytoscape';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tableview',
@@ -15,11 +17,28 @@ columnDisplayed = ["id","name","source","target","action"]
   constructor(
     private nodes : NodeService,
     private edges : EdgeService,
-    private dialog : MatDialog
+    private cy : PadiCytoscape,
+    private dialog : MatDialog,
+    private route : ActivatedRoute
   ) {
-    this.edges.getedges(result => {
-      this.dataSource = result
-    })
+    let config = this.route.routeConfig
+    let params = this.route.snapshot.params
+    console.log("COnfig",config)
+    switch(config.path){
+      case 'tableview':
+      console.log("No params provided")
+      this.edges.getedges({node_id:null},result => {
+        this.dataSource = result
+      })
+      break
+      case 'tableview/:component_type/:component_id':
+      console.log("Parameter provided exists")
+        this.edges.getedges({node_id:params.component_id},result => {
+          this.dataSource = result
+        })
+      break
+    }
+    console.log("Route",this.route.snapshot.params)
   }
 
   ngOnInit() {
@@ -30,6 +49,13 @@ columnDisplayed = ["id","name","source","target","action"]
       data:{
         component:edge
       }
+    })
+  }
+  removeEdge(element){
+    console.log("Elemeent",element)
+    this.edges.removeedge(element,result => {
+      this.cy.removeEdge(element.id)
+      console.log("Result",result)
     })
   }
 }

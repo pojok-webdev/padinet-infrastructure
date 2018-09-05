@@ -7,6 +7,7 @@ import { TableviewComponent } from '../tableview/tableview.component';
 const route : Routes = [
   {path:'infrastructur',component:InfrastructureComponent},
   {path:'tableview',component:TableviewComponent},
+  {path:'tableview/:component_type/:component_id',component:TableviewComponent},
   {path:'**',component:InfrastructureComponent}
 ] 
 @NgModule({
