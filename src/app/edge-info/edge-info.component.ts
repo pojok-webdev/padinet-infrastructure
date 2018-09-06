@@ -28,9 +28,11 @@ export class EdgeInfoComponent implements OnInit {
     this.edge = this.data.component
   }
   updateEdge(edge){
-    edge.tgt = edge.target
+    let eid = edge.id
+    edge.id = (edge.id).substring(1,(edge.id).length)
+    console.log("Eid",edge.id)    
     this.edgeservice.updateEdge(edge,result => {
-      this.cy.updateEdge(edge.id,edge,() => {
+      this.cy.updateEdge(eid,edge,() => {
         this.dref.close()
       })
     })

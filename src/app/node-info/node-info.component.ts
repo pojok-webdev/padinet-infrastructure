@@ -14,6 +14,12 @@ export class NodeInfoComponent implements OnInit {
   obj = {
     id:1,name:"",location:"" 
    }
+   neighboursDataSource = [
+     {name:"A"},
+     {name:"B"},
+     {name:"C"}
+    ]
+  neighbourColumns = ["name","address","city","capacity","vendor","link"]
    constructor(
     private dref: MatDialogRef<NodeInfoComponent>,
     @Inject (MAT_DIALOG_DATA) private data:any,
@@ -22,20 +28,17 @@ export class NodeInfoComponent implements OnInit {
   ) {
     console.log("Data got : ",data)
     this.component = data.component
+    this.nodeservice.getNeighbours(this.component.id,result => {
+      this.neighboursDataSource = result
+    })
   }
   updateComponent(component){
     let id = component._id
     console.log("ID",id)
     console.log("Component",component)
-    this.cy.updateNode(component.id,component,()=>{
-      this.dref.close()
-    })
-    //component.id = component._id
-    /*this.nodeservice.updatenode(component, result => {
-      this.cy.updateNode(this.data.component.name,component,() => {
+    this.nodeservice.updatenode(component, result => {
         this.dref.close()
-      })      
-    })*/
+    })
   }
   closeDialog(){
     this.dref.close()
@@ -44,7 +47,9 @@ export class NodeInfoComponent implements OnInit {
   }
   removeComponent(component){
     this.nodeservice.removeNode(component, ()=>{
-      this.dref.close()
+      this.cy.removeNode(component.id,()=>{
+        this.dref.close()
+      })
     })
   }
 }

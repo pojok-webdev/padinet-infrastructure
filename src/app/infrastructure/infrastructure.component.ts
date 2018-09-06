@@ -54,6 +54,7 @@ export class InfrastructureComponent implements OnInit {
       this.initLinks(edges=>{
         console.log("Get Init Links invoked")
         edges.forEach(edge=>{
+          edge.id = 'e'+edge.id
           console.log("edge",edge)
           this.globaledges.push({data:edge})
         })
@@ -111,12 +112,6 @@ export class InfrastructureComponent implements OnInit {
     .subscribe(
       data => {}
     )
-  }
-  removeLink(link_id){
-    this.cy.removeEdge(link_id)
-  }
-  removeNode(){
-    this.cy.removeNode()
   }
   updateNode(){
     let id="Kentang",data={id:"OK"}

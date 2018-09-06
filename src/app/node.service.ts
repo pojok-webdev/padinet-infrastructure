@@ -49,7 +49,7 @@ export class NodeService {
     )
   }
   removeNode(obj,callback){
-    this.node = this.http.get(this.appvar.server+'removenode/'+obj.mysqlid)
+    this.node = this.http.get(this.appvar.server+'removenode/'+obj.id)
     this.node.subscribe(
       data => {
         console.log("Success removenode",data)
@@ -57,6 +57,19 @@ export class NodeService {
       },
       err => {
         console.log("Error removenode",err)
+        callback(err)
+      }
+    )
+  }
+  getNeighbours(node_id,callback){
+    this.node = this.http.get(this.appvar.server+'getneighbours/'+node_id)
+    this.node.subscribe(
+      data => {
+        console.log("Success getneighbours",data)
+        callback(data)
+      },
+      err => {
+        console.log("Error getneighbours",err)
         callback(err)
       }
     )

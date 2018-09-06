@@ -32,6 +32,7 @@ export class AddLinkDialogComponent implements OnInit {
     let obj = {data:edge}
     console.log("Edge",edge)
     edge.linktype = "1"
+    edge.createuser = "anonymous"
     this.edge.saveEdge(edge,result => {
       this.padiCS.addEdge(obj,() => {
         this.dref.close()

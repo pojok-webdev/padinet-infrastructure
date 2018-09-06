@@ -34,9 +34,10 @@ export class PadiCytoscape{
         var collection = this.Cy.elements("edge[id='"+edge_id+"']");
         this.Cy.remove( collection );    
     }
-    removeNode(){
-        var collection = this.Cy.elements("node[id='Neo']");
+    removeNode(node_id,callback){
+        var collection = this.Cy.elements("node[id='"+node_id+"']");
         this.Cy.remove( collection );
+        callback()
     }
     addEdge(obj,callback){
         console.log("Add Edge",obj)
@@ -65,14 +66,13 @@ export class PadiCytoscape{
                     selector:'node',
                     style:{
                         'background-color':'green',
-                        'label':'data(id)'
+                        'label':'data(name)'
                     }
                 },
                 {
                     selector:'edge',
                     style:{
                         'width':'3',
-                        'label':'data(name)',
                         'curve-style':'bezier'
                     }
                 }
