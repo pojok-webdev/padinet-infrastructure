@@ -28,7 +28,8 @@ export class EdgeService {
     this.obj.subscribe(
       data => {
         console.log(data),
-        callback(data)
+        obj.id = 'e'+obj.id
+        callback(obj)
       },
       err => {
         console.log(err)

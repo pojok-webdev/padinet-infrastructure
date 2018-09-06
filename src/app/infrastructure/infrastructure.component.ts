@@ -36,7 +36,7 @@ export class InfrastructureComponent implements OnInit {
     this.bts.getnodes(result => {
       this.btses = result
       result.forEach(node => {
-        
+        node.typeCss = "branch"
         this.globalnodes.push({data:node})
       });
       callback(result)
@@ -54,7 +54,7 @@ export class InfrastructureComponent implements OnInit {
       this.initLinks(edges=>{
         console.log("Get Init Links invoked")
         edges.forEach(edge=>{
-          edge.id = 'e'+edge.id
+          //edge.id = 'e'+edge.id
           console.log("edge",edge)
           this.globaledges.push({data:edge})
         })

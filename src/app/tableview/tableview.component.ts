@@ -12,8 +12,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./tableview.component.css']
 })
 export class TableviewComponent implements OnInit {
-dataSource = [{node:"satu"},{node:"dua"}]
-columnDisplayed = ["id","name","source","target","action"]
+dataSource
+columnDisplayed = ["name","source","target","action"]
   constructor(
     private nodes : NodeService,
     private edges : EdgeService,
@@ -44,6 +44,10 @@ columnDisplayed = ["id","name","source","target","action"]
   ngOnInit() {
   }
   editEdge(edge){
+    //edge.id = 'e'+edge.id
+    edge.source = edge.source.toString()
+    edge.target = edge.target.toString()
+    console.log("Edge",edge)
     this.dialog.open(EdgeInfoComponent,{
       width: '500px',
       data:{

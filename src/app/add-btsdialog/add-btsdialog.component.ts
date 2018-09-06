@@ -28,6 +28,7 @@ export class AddBTSDialogComponent implements OnInit {
   }
   saveBts(bts){
     bts.name = bts.id
+    bts.typeCss = 'branch'
     console.log("BTS_",bts)
     let obj = {data:bts}
     console.log("OBJ to save",obj)

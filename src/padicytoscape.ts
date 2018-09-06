@@ -63,6 +63,12 @@ export class PadiCytoscape{
             elements:{nodes:nodes,edges:edges},
             style:[
                 {
+                    selector:'#2',
+                    style:{
+                        'background-color':'red'
+                    }
+                },
+                {
                     selector:'node',
                     style:{
                         'background-color':'green',
@@ -76,6 +82,7 @@ export class PadiCytoscape{
                         'curve-style':'bezier'
                     }
                 }
+
             ],
             styleEnable:true,
             layout:{

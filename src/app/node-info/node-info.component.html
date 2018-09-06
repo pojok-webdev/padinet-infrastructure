@@ -19,7 +19,7 @@
     <button mat-button (click)="updateComponent(component)">Update</button>
     <button mat-button (click)="removeComponent(component)">Remove</button>    
   </mat-tab>
-  <mat-tab label="Neighbours">
+  <mat-tab label="Neighbours {{neighboursDataSource.length}}">
     <table mat-table [dataSource]="neighboursDataSource" class="full-width">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
