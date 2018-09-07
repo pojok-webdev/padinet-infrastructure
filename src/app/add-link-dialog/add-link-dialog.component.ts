@@ -29,11 +29,15 @@ export class AddLinkDialogComponent implements OnInit {
   ngOnInit() {
   }
   saveEdge(edge){
+    edge.source = edge.source.toString();
+    edge.target = edge.target.toString();
     let obj = {data:edge}
     console.log("Edge",edge)
-    edge.linktype = "1"
+    //edge.linktype = "1"
     edge.createuser = "anonymous"
     this.edge.saveEdge(edge,result => {
+      console.log("Save Edge Result",result)
+      obj.data.id = result.insertedId
       this.padiCS.addEdge(obj,() => {
         this.dref.close()
       })  

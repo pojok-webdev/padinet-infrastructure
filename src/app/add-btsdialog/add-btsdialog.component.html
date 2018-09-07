@@ -2,7 +2,7 @@
   {{title}}
 </p>
 <mat-form-field class="full-width">
-  <input type="text" matInput placeholder="ID BTS" [(ngModel)]="obj.id">
+  <input type="text" matInput placeholder="Nama" [(ngModel)]="obj.name">
 </mat-form-field>
 
 <mat-form-field class="full-width">
@@ -14,6 +14,14 @@
     <mat-option value="4">AP</mat-option>
     <mat-option value="5">Client</mat-option>
   </mat-select>
+</mat-form-field>
+
+<mat-form-field class="full-width">
+  <input type="text" matInput placeholder="Address" [(ngModel)]="obj.address">
+</mat-form-field>
+
+<mat-form-field class="full-width">
+  <input type="text" matInput placeholder="City" [(ngModel)]="obj.city">
 </mat-form-field>
 
 <mat-form-field class="full-width">

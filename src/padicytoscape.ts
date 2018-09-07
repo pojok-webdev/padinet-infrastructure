@@ -63,16 +63,52 @@ export class PadiCytoscape{
             elements:{nodes:nodes,edges:edges},
             style:[
                 {
-                    selector:'#2',
+                    selector:'node[class="ip_transit"]',
                     style:{
-                        'background-color':'red'
+                        shape:'rectangle',
+                        'background-color':'white',
+                        label:'data(name)',
+                        'background-image':'./assets/baseline-public-24px.svg'
+                    }
+                },{
+                    selector:'node[class="core"]',
+                    style:{
+                        shape:'rectangle',
+                        'background-color':'white',
+                        label:'data(name)',
+                        'background-image':'./assets/baseline-navigation-24px.svg'
+                    }
+                },{
+                    selector:'node[class="branch"]',
+                    style:{
+                        shape:'rectangle',
+                        'background-color':'white',
+                        label:'data(name)',
+                        'background-image':'./assets/baseline-router-24px.svg'
                     }
                 },
                 {
-                    selector:'node',
+                    selector:'node[class="bts"]',
                     style:{
-                        'background-color':'green',
-                        'label':'data(name)'
+                        'background-color':'azure',
+                        'label':'data(name)',
+                        'background-image':'./assets/baseline-settings_input_antenna-24px.svg'
+                    }
+                },
+                {
+                    selector:'node[class="ap"]',
+                    style:{
+                        'background-color':'lavender',
+                        'label':'data(name)',
+                        'background-image':'./assets/baseline-wifi-24px.svg'
+                    }
+                },
+                {
+                    selector:'node[class="client"]',
+                    style:{
+                        'background-color':'lavender',
+                        'label':'data(name)',
+                        'background-image':'./assets/baseline-desktop_windows-24px.svg'
                     }
                 },
                 {

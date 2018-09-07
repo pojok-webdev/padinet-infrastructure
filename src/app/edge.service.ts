@@ -11,6 +11,8 @@ export class EdgeService {
   objs : Observable<any[]>
   constructor(private http:HttpClient,private appvar:AppvarService) {}
   saveEdge(obj,callback){
+    obj.source = obj.source.toString()
+    obj.target = obj.target.toString()
     this.obj = this.http.post<any>(this.appvar.server+'saveedge',obj)
     this.obj.subscribe(
       data => {
