@@ -1,3 +1,11 @@
 .full-width{
     width: 100%;
 }
+.padipointer{
+    padding-left: 5px;
+}
+.padipointer:hover{
+    cursor: pointer;
+    background: gold;
+    color: blue;
+}

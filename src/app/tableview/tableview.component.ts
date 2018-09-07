@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TableviewComponent implements OnInit {
 dataSource
-columnDisplayed = ["name","source","target","action"]
+columnDisplayed = ["name","source","saddress","scity","target","taddress","tcity","action"]
   constructor(
     private nodes : NodeService,
     private edges : EdgeService,
