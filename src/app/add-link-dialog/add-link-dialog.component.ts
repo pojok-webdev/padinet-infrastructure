@@ -28,6 +28,7 @@ export class AddLinkDialogComponent implements OnInit {
   }
   ngOnInit() {
   }
+  
   saveEdge(edge){
     edge.source = edge.source.toString();
     edge.target = edge.target.toString();

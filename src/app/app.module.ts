@@ -6,7 +6,7 @@ import { InfrastructureComponent } from './infrastructure/infrastructure.compone
 import { RouterModule } from '@angular/router';
 import { RoutingModule } from './routing/routing.module';
 import { PadiCytoscape } from '../padicytoscape';
-import { MatMenuModule, MatButtonModule, MatDialogModule, MatInputModule, MatSelectModule, MatTableModule, MatTabsModule } from '@angular/material'
+import { MatMenuModule, MatButtonModule, MatDialogModule, MatInputModule, MatSelectModule, MatTableModule, MatTabsModule, MatAutocompleteModule } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddBTSDialogComponent } from './add-btsdialog/add-btsdialog.component'
 import { FormsModule } from '@angular/forms';
