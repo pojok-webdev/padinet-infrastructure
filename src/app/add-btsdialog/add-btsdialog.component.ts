@@ -55,7 +55,7 @@ export class AddBTSDialogComponent implements OnInit {
     let obj = {data:bts}
     console.log("OBJ to save",obj)
     this.node.saveNode(bts,result => {
-      obj.data.id = result.insertedIndex
+      obj.data.id = result.insertId
       this.padics.addCircle(obj,() => {
         console.log("OBJ",obj)
         this.dref.close()
