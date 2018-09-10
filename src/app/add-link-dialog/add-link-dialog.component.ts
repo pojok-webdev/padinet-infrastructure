@@ -11,6 +11,8 @@ import { EdgeService } from '../edge.service';
 })
 export class AddLinkDialogComponent implements OnInit {
   btses
+  linkTypes
+  vendors
   constructor(
     private padiCS:PadiCytoscape,
     private nodes : NodeService,
@@ -22,9 +24,19 @@ export class AddLinkDialogComponent implements OnInit {
       console.log("Result", result);
       this.btses = result
     })
+    this.edge.getLinkTypes(result => {
+      this.linkTypes = result
+    })
+    this.edge.getVendors(result => {
+      this.vendors = result
+    })
   }
   obj = {
-    id:'',source:'',target:''
+    id:'',
+    source:'',
+    target:'',
+    linktype:'1',
+    vendor:'1'
   }
   ngOnInit() {
   }

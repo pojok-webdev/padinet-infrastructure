@@ -24,6 +24,7 @@ export class PadiCytoscape{
     }
     updateEdge(id,data,callback){
         var ele = this.Cy.elements("edge[id='"+id+"']")
+        console.log("Id to move",id)
         ele.move({
             target:data.target,
             source:data.source

@@ -30,7 +30,7 @@ export class EdgeService {
     this.obj.subscribe(
       data => {
         console.log(data),
-        obj.id = 'e'+obj.id
+        //obj.id = 'e'+obj.id
         callback(obj)
       },
       err => {
@@ -60,6 +60,7 @@ export class EdgeService {
     )
   }
   removeedge(obj,callback){
+    console.log("Remove Edge invoked",obj)
     this.obj = this.http.get(this.appvar.server+'removeedge/'+obj.id)
     this.obj.subscribe(
       data => {
@@ -68,6 +69,32 @@ export class EdgeService {
       },
       err => {
         console.log("Error remove edge",err)
+        callback(err)
+      }
+    )
+  }
+  getVendors(callback){
+    this.obj = this.http.get(this.appvar.server+'getvendors')
+    this.obj.subscribe(
+      data => {
+        console.log("Success getvendors",data)
+        callback(data)
+      },
+      err => {
+        console.log("Error getvendors",err)
+        callback(err)
+      }
+    )
+  }
+  getLinkTypes(callback){
+    this.obj = this.http.get(this.appvar.server+'getlinktypes')
+    this.obj.subscribe(
+      data => {
+        console.log("Success getlinktypes",data)
+        callback(data)  
+      },
+      err => {
+        console.log("Error getlinktypes",err)
         callback(err)
       }
     )
