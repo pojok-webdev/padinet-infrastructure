@@ -5,15 +5,16 @@ import { MatDialog } from '@angular/material';
 import { EdgeInfoComponent } from '../edge-info/edge-info.component';
 import { PadiCytoscape } from '../../padicytoscape';
 import { ActivatedRoute } from '@angular/router';
-
+import { MatTableDataSource } from '@angular/material'
 @Component({
   selector: 'app-tableview',
   templateUrl: './tableview.component.html',
   styleUrls: ['./tableview.component.css']
 })
 export class TableviewComponent implements OnInit {
-dataSource
+dataSource : MatTableDataSource<any>
 columnDisplayed = ["name","source","saddress","scity","target","taddress","tcity","action"]
+searchBox = ""
   constructor(
     private nodes : NodeService,
     private edges : EdgeService,
@@ -28,7 +29,7 @@ columnDisplayed = ["name","source","saddress","scity","target","taddress","tcity
       case 'tableview':
       console.log("No params provided")
       this.edges.getedges({node_id:null},result => {
-        this.dataSource = result
+        this.dataSource = new MatTableDataSource(result)
       })
       break
       case 'tableview/:component_type/:component_id':
@@ -40,11 +41,15 @@ columnDisplayed = ["name","source","saddress","scity","target","taddress","tcity
     }
     console.log("Route",this.route.snapshot.params)
   }
-
+  applyFilter(filterValue: string) {
+    console.log("filtervl",filterValue)
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
+  }
   ngOnInit() {
   }
   editEdge(edge){
-    //edge.id = 'e'+edge.id
     edge.source = edge.source.toString()
     edge.target = edge.target.toString()
     console.log("Edge",edge)

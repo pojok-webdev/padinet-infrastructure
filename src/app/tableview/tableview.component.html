@@ -5,6 +5,10 @@
 </mat-menu>
 <button mat-button routerLink="/tableview">Top Level</button>
 <button mat-button routerLink="/infrastructur">Graph View</button>
+<mat-form-field class="full-width">
+  <input type="text" matInput [(ngModel)]="searchBox" placeholder="Search" (keyup)="applyFilter($event.target.value)" >
+</mat-form-field>
+
 <table mat-table [dataSource]="dataSource" class="full-width">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Name</th>
