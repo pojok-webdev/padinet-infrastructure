@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NodeService } from '../node.service';
 import { EdgeService } from '../edge.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatIconRegistry } from '@angular/material';
 import { EdgeInfoComponent } from '../edge-info/edge-info.component';
 import { PadiCytoscape } from '../../padicytoscape';
 import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material'
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-tableview',
   templateUrl: './tableview.component.html',
@@ -20,7 +21,9 @@ searchBox = ""
     private edges : EdgeService,
     private cy : PadiCytoscape,
     private dialog : MatDialog,
-    private route : ActivatedRoute
+    private route : ActivatedRoute,
+    private iconRegistry : MatIconRegistry,
+    private sanitizer : DomSanitizer
   ) {
     let config = this.route.routeConfig
     let params = this.route.snapshot.params
@@ -40,6 +43,10 @@ searchBox = ""
       break
     }
     console.log("Route",this.route.snapshot.params)
+    this.iconRegistry
+    .addSvgIcon(
+      'backbutton',sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-backspace-24px.svg')
+    )
   }
   applyFilter(filterValue: string) {
     console.log("filtervl",filterValue)

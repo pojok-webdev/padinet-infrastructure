@@ -11,9 +11,15 @@ import { EdgeService } from '../edge.service';
 })
 export class EdgeInfoComponent implements OnInit {
   edge = {
-    id:'',name:'',source:'',target:''
+    id:'',name:'',source:'',linktype:'',target:''
   }
+  // 0:IP_Transit-Core 1:core-rodis 2 rodis-bts 3 bts-bts 4 bts-ap 5 ap-client                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+  linktypes = [
+    {id:'0',name:'IP_Transit-Core'},{id:'1',name:'core-rodis'},{id:'2',name:'rodis-bts'},{id:'3',name:'bts-bts'},{id:'4',name:'bts-ap'},{id:'5',name:'ap-client'}
+  ]
   btses
+  vendors
+  NotToHide = false
   constructor(
     private cy : PadiCytoscape, 
     private dref : MatDialogRef<EdgeInfoComponent>,
@@ -24,6 +30,9 @@ export class EdgeInfoComponent implements OnInit {
     this.nodeservice.getnodes(result => {
       this.btses = result
       console.log("Node Result",result)
+    })
+    this.edgeservice.getVendors(result => {
+      this.vendors = result
     })
     console.log("Component",this.data.component)
     this.edge = this.data.component

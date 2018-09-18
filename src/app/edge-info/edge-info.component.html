@@ -1,27 +1,52 @@
 <p>
   Edge Info
 </p>
-<mat-form-field class="full-width">
+<mat-form-field class="full-width" *ngIf="NotToHide">
   <input type="text" matInput [(ngModel)]="edge.id" placeholder="ID">
 </mat-form-field>
 <mat-form-field class="full-width">
   <input type="text" matInput [(ngModel)]="edge.name" placeholder="Name">
 </mat-form-field>
 <mat-form-field class="full-width">
+  <mat-select placeholder="Source" [(ngModel)]="edge.linktype" placeholder="Link Type">
+    <mat-option value="{{linktype.id}}" *ngFor="let linktype of linktypes">{{linktype.name}}</mat-option>
+  </mat-select>  
+</mat-form-field>
+
+<mat-form-field class="full-width">
   <mat-select placeholder="Source" [(ngModel)]="edge.source" placeholder="Source">
     <mat-option value="{{bts.id}}" *ngFor="let bts of btses">{{bts.name}}</mat-option>
   </mat-select>  
 </mat-form-field>
+
+<mat-form-field class="full-width">
+  <input type="text" matInput [(ngModel)]="edge.source_ipaddr" placeholder="IP Address">
+</mat-form-field>
+
 <mat-form-field class="full-width">
   <mat-select placeholder="Target" [(ngModel)]="edge.target" placeholder="Target">
     <mat-option value="{{bts.id}}" *ngFor="let bts of btses">{{bts.name}}</mat-option>
   </mat-select>    
 </mat-form-field>
+
+
+<mat-form-field class="full-width">
+  <input type="text" matInput [(ngModel)]="edge.target_ipaddr" placeholder="IP Address">
+</mat-form-field>
+
+
 <mat-form-field class="full-width">
   <input type="text" matInput [(ngModel)]="edge.capacity" placeholder="Capacity">
 </mat-form-field>
+
 <mat-form-field class="full-width">
-  <input type="text" matInput [(ngModel)]="edge.vendor" placeholder="Vendor">
+  <input type="text" matInput [(ngModel)]="edge.utility" placeholder="Utility">
+</mat-form-field>
+
+<mat-form-field class="full-width">
+  <mat-select placeholder="Vendor" [(ngModel)]="edge.vendor">
+    <mat-option value="{{vendor.id}}"  *ngFor="let vendor of vendors">{{vendor.name}}</mat-option>
+  </mat-select>
 </mat-form-field>
 <mat-form-field class="full-width">
   <input type="text" matInput [(ngModel)]="edge.description" placeholder="Description">
