@@ -4,25 +4,30 @@
 <mat-tab-group>
   <mat-tab label="Info">
     <mat-form-field class="full-width">
-      <input type="text" matInput [(ngModel)]="component.name" value="{{obj.name}}" placeholder="Name">
+      <input type="text" matInput [(ngModel)]="component.name" placeholder="Name">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input type="text" matInput [(ngModel)]="component.address" value="{{obj.address}}" placeholder="Address">
+      <input type="text" matInput [(ngModel)]="component.address" placeholder="Address">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input type="text" matInput [(ngModel)]="component.city" value="{{obj.city}}" placeholder="City">
+      <input type="text" matInput [(ngModel)]="component.city" placeholder="City">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input type="text" matInput [(ngModel)]="component.location" value="{{obj.location}}" placeholder="Locations">
+      <input type="text" matInput [(ngModel)]="component.location" placeholder="Locations">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input type="text" matInput [(ngModel)]="component.description" value="{{obj.description}}" placeholder="Description">
+      <mat-select [(ngModel)]="component.nodetype" placeholder="Node Type">
+        <mat-option value="{{nodetype.id}}" *ngFor="let nodetype of nodetypes">{{nodetype.name}}</mat-option>
+      </mat-select>  
+    </mat-form-field>    
+    <mat-form-field class="full-width">
+      <input type="text" matInput [(ngModel)]="component.description" placeholder="Description">
     </mat-form-field>
     <button mat-button (click)="closeDialog()">Close</button>
     <button mat-button (click)="updateComponent(component)">Update</button>
     <button mat-button (click)="removeComponent(component)">Remove</button>    
   </mat-tab>
-  <mat-tab label="Neighbours {{neighboursDataSource.length}}">
+  <mat-tab label="Neighbours ({{neighboursDataSource.length}})">
     <table mat-table [dataSource]="neighboursDataSource" class="full-width">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>

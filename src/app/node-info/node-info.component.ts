@@ -18,7 +18,17 @@ export class NodeInfoComponent implements OnInit {
      {name:"A"},
      {name:"B"},
      {name:"C"}
-    ]
+  ]
+  /*
+  1 IP_Transit 2 Core 3 BTS 4 AP 5 Client
+  */
+  nodetypes = [
+    {id:'1',name:'IP_Transit'},
+    {id:'2',name:'Core'},
+    {id:'3',name:'BTS'},
+    {id:'4',name:'AP'},
+    {id:'5',name:'Client'}
+  ]
   neighbourColumns = ["name","address","city","capacity","vendor","link"]
    constructor(
     private dref: MatDialogRef<NodeInfoComponent>,

@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NodeInfoComponent } from './node-info/node-info.component';
 import { EdgeInfoComponent } from './edge-info/edge-info.component';
 import { TableviewComponent } from './tableview/tableview.component';
+import { SettingComponent } from './setting/setting.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { TableviewComponent } from './tableview/tableview.component';
     ShowNodePropertyDialogComponent,
     NodeInfoComponent,
     EdgeInfoComponent,
-    TableviewComponent
+    TableviewComponent,
+    SettingComponent
   ],
   imports: [
     BrowserModule,
