@@ -17,6 +17,8 @@ import { NodeInfoComponent } from './node-info/node-info.component';
 import { EdgeInfoComponent } from './edge-info/edge-info.component';
 import { TableviewComponent } from './tableview/tableview.component';
 import { SettingComponent } from './setting/setting.component';
+import { Table2ViewComponent } from './table2-view/table2-view.component';
+import { VendorPipe } from './vendor.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,9 @@ import { SettingComponent } from './setting/setting.component';
     NodeInfoComponent,
     EdgeInfoComponent,
     TableviewComponent,
-    SettingComponent
+    SettingComponent,
+    Table2ViewComponent,
+    VendorPipe
   ],
   imports: [
     BrowserModule,
