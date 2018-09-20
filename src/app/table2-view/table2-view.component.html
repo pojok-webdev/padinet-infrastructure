@@ -1,14 +1,7 @@
-<button mat-button [matMenuTriggerFor]="infrastructure">Menu</button>
-<mat-menu #infrastructure="matMenu">
-  <button mat-menu-item (click)="addNode()">Add Node</button>
-  <button mat-menu-item (click)="addLink()">Add Link</button>
-</mat-menu>
-<button mat-button routerLink="/tableview">Top Level</button>
-<button mat-button routerLink="/infrastructur">Graph View</button>
-<mat-form-field class="full-width">
-  <input type="text" matInput [(ngModel)]="searchBox" placeholder="Search" (keyup)="applyFilter($event.target.value)" >
+<mat-form-field class="ninetypercent">
+  <input type="text" matInput [(ngModel)]="searchBox" placeholder="Search" (keyup)="applyFilter($event.target.value)" class="searchInput">
 </mat-form-field>
-<mat-icon svgIcon="backbutton"></mat-icon>
+<button mat-button (click)="clearSearchbox()"><mat-icon svgIcon="backbutton"></mat-icon></button>
 
 <table mat-table [dataSource]="dataSource" class="full-width">
   <ng-container matColumnDef="name">

@@ -6,35 +6,37 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class VendorPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
+    let out
     switch(value){
       case '1':
-      return 'PadiNET'
+      out = 'PadiNET'
       break
       case '2':
-      return 'Icon+'
+      out = 'Icon+'
       break
       case '3':
-      return 'Fiber Star'
+      out = 'Fiber Star'
       break
       case '4':
-      return 'Telkom'
+      out = 'Telkom'
       break
       case '5':
-      return 'PegasCom'
+      out = 'PegasCom'
       break
       case '6':
-      return 'NapInfo'
+      out = 'NapInfo'
       break
       case '7':
-      return 'APJII'
+      out = 'APJII'
       break
       case '8':
-      return 'CGS'
+      out = 'CGS'
       break
       case '9':
-      return 'BizNet'
+      out = 'BizNet'
       break
     }
+    return out
   }
 
 }

@@ -1,1 +1,7 @@
+<button mat-button routerLink="/infrastructur"><mat-icon svgIcon="graphview"></mat-icon> Graph View</button>
+<button mat-button [matMenuTriggerFor]="tbl"><mat-icon svgIcon="tableview"></mat-icon> Table View</button>
+<mat-menu #tbl="matMenu">
+    <button mat-menu-item routerLink="/tableview">Source-Target</button>
+    <button mat-menu-item routerLink="/table2view">Vendor,Capacity,Utility</button>
+</mat-menu>
 <router-outlet></router-outlet>

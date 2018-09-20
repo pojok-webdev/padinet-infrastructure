@@ -12,19 +12,28 @@ export class Table2ViewComponent implements OnInit {
   dataSource : MatTableDataSource<any>
   columnDisplayed = ["name","vendor","capacity","utility","action"]
   vendors
+  searchBox = ""
   constructor(
     private edge : EdgeService,
     private vendor : VendorService
   ) {
     this.edge.getedges({node_id:null}, result => {
-      this.dataSource = result
+      this.dataSource = new MatTableDataSource(result)
     })
     this.vendor.gets(result => {
-      this.vendors = result
+      this.vendors = new MatTableDataSource(result)
     })
   }
-
+  applyFilter(filterValue: string) {
+    console.log("filtervl",filterValue)
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
+  }
   ngOnInit() {
   }
-
+  clearSearchbox(){
+    this.searchBox = ""
+    this.applyFilter("")
+  }
 }

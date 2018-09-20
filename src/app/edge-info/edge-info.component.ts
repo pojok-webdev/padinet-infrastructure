@@ -14,8 +14,22 @@ export class EdgeInfoComponent implements OnInit {
     id:'',name:'',source:'',linktype:'',target:''
   }
   // 0:IP_Transit-Core 1:core-rodis 2 rodis-bts 3 bts-bts 4 bts-ap 5 ap-client                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+  networknodes = [
+    {id:'0',name:'IP_Transit-Core'},
+    {id:'1',name:'core-rodis'},
+    {id:'2',name:'rodis-bts'},
+    {id:'3',name:'bts-bts'},
+    {id:'4',name:'bts-ap'},
+    {id:'5',name:'ap-client'},
+  ]
   linktypes = [
-    {id:'0',name:'IP_Transit-Core'},{id:'1',name:'core-rodis'},{id:'2',name:'rodis-bts'},{id:'3',name:'bts-bts'},{id:'4',name:'bts-ap'},{id:'5',name:'ap-client'}
+    {id:'0',name:'FO'},
+    {id:'1',name:'Microwave'},
+    {id:'2',name:'AirFiber'},
+    {id:'3',name:'Mimosa'},
+    {id:'4',name:'Mikrotik'},
+    {id:'5',name:'UTP'},
+    {id:'6',name:'STP'},
   ]
   btses
   vendors

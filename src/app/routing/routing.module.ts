@@ -11,7 +11,7 @@ const route : Routes = [
   {path:'tableview',component:TableviewComponent},
   {path:'tableview/:component_type/:component_id',component:TableviewComponent},
   {path:'setting',component:SettingComponent},
-  {path:'table2view',component:Table2ViewComponent}
+  {path:'table2view',component:Table2ViewComponent},
   {path:'**',component:InfrastructureComponent}
 ] 
 @NgModule({

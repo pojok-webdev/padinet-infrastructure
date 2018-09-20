@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NodeService } from '../node.service';
 import { EdgeService } from '../edge.service';
-import { MatDialog, MatIconRegistry } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { EdgeInfoComponent } from '../edge-info/edge-info.component';
 import { PadiCytoscape } from '../../padicytoscape';
 import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material'
-import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-tableview',
   templateUrl: './tableview.component.html',
@@ -17,13 +15,10 @@ dataSource : MatTableDataSource<any>
 columnDisplayed = ["name","source","saddress","scity","target","taddress","tcity","action"]
 searchBox = ""
   constructor(
-    private nodes : NodeService,
     private edges : EdgeService,
     private cy : PadiCytoscape,
     private dialog : MatDialog,
     private route : ActivatedRoute,
-    private iconRegistry : MatIconRegistry,
-    private sanitizer : DomSanitizer
   ) {
     let config = this.route.routeConfig
     let params = this.route.snapshot.params
@@ -38,15 +33,12 @@ searchBox = ""
       case 'tableview/:component_type/:component_id':
       console.log("Parameter provided exists")
         this.edges.getedges({node_id:params.component_id},result => {
-          this.dataSource = result
+          this.dataSource = new MatTableDataSource(result)
         })
       break
     }
     console.log("Route",this.route.snapshot.params)
-    this.iconRegistry
-    .addSvgIcon(
-      'backbutton',sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-backspace-24px.svg')
-    )
+    
   }
   applyFilter(filterValue: string) {
     console.log("filtervl",filterValue)
@@ -73,5 +65,9 @@ searchBox = ""
       this.cy.removeEdge(element.id)
       console.log("Result",result)
     })
+  }
+  clearSearchbox(){
+    this.searchBox = ""
+    this.applyFilter("")
   }
 }
